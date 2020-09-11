@@ -1,6 +1,5 @@
 const sr = require('./sr.js');
 const tmi = require('tmi.js');
-const heroku = require('heroku');
 const twitch = require('twitch-js')
 const cors = require('cors');
 const prefix = require('./config/env.json');

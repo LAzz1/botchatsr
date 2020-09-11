@@ -3,7 +3,6 @@ console.log('BOT_CHAT');
 const express = require('express')
 const sr = require('./sr.js');
 const tmi = require('tmi.js');
-const heroku = require('heroku');
 const cors = require('cors');
 const morgan = require('morgan')
 const app = express();
