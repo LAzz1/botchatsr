@@ -1,9 +1,12 @@
 console.log('BOT_CHAT');
 
+const express = require('express')
 const sr = require('./sr.js');
 const tmi = require('tmi.js');
 const cors = require('cors');
-const twitch = require('twitch-js')
+const app = express();
+const mongoose = require('mongoose');
+const twitch = require('twitch-js');
 const prefix = require('./config/env.json');
 const opts = {
     identity: {
@@ -15,6 +18,15 @@ const opts = {
 const client = new tmi.Client(opts);
 client.connect();
 
+
+mongoose.connect(
+    process.env.MONGO_URL, {
+    useNewUrlParser: true
+}
+);
+
+app.use(cors());
+app.listen(3000);
 
 const Discord = require('discord.js');
 const bot = new Discord.Client();
