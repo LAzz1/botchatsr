@@ -5,6 +5,7 @@ const sr = require('./sr.js');
 const tmi = require('tmi.js');
 const heroku = require('heroku');
 const cors = require('cors');
+const morgan = require('morgan')
 const app = express();
 const mongoose = require('mongoose');
 const twitch = require('twitch-js');
@@ -20,7 +21,10 @@ const client = new tmi.Client(opts);
 client.connect();
 
 app.use(cors());
-app.listen(3000);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan("dev"));
+app.listen(process.env.PORT || 3000);
 
 const Discord = require('discord.js');
 const bot = new Discord.Client();
