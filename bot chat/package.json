@@ -1,6 +1,7 @@
 {
   "name": "bot-chat",
   "version": "0.0.0",
+  "engines": { "12.x" },
   "description": "bot chat",
   "main": "app.js",
   "author": {
