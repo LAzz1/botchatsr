@@ -1,13 +1,13 @@
 {
   "name": "bot-chat",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "bot chat",
   "main": "app.js",
   "scripts": {
     "start": "node src/app.js"
   },
   "author": {
-    "name": ""
+    "name": "zilio"
   },
   "dependencies": {
     "cors": "^2.8.5",
