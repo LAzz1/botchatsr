@@ -29,16 +29,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include=".env" />
+    <Content Include="botdisc.js" />
     <Content Include="config\env.json" />
     <Content Include="app.js" />
     <Content Include="package.json" />
-    <Content Include="Procfile" />
+    <Content Include="Page1.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="README.md" />
+    <Content Include="routes.js" />
     <Content Include="sr.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="config\" />
+    <Folder Include="sim\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
 </Project>
