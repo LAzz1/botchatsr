@@ -1,9 +1,6 @@
-const express = require('express')
-const app = express();
-const routes = require('express').Router();
-const multer = require('multer')
-const sr = require('./sr.js');
+const route = require('express').Router();
 
-routes.get("/", (req, res) => {return res.json(sr)})
+//era pra postar no localhost
+route.get('/', (req, res) => { return res.json(sr) })
 
-module.exports = routes;
+module.exports = route;

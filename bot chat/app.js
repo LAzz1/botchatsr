@@ -7,10 +7,7 @@ const routes = require('express').Router();
 const app = express();
 const sr = require('./sr.js');
 const tmi = require('tmi.js');
-const cors = require('cors');
 const morgan = require('morgan')
-const mongoose = require('mongoose');
-const twitch = require('twitch-js');
 const prefix = require('./config/env.json');
 
 //bot da twitch
@@ -32,8 +29,8 @@ const bot = new Discord.Client();
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 app.listen(process.env.PORT || 3000);
-app.get('/', (req, res) => { res.render('./sr') })
-app.use(require('./routes'));
+app.post('/', (req, res) => { res.render('./sr') })
+
 
 
 client.on('message', (alvo, user, msg, self) => {
@@ -48,17 +45,17 @@ client.on('message', (alvo, user, msg, self) => {
 
     //comandos do chat
     switch (mensagem) {
-        case '!steam': client.say(alvo, 'Steam não disponivel'); break;
+        case '!steam': client.say(alvo, 'https://steamcommunity.com/id/zilio0'); break;
 
-        case '!comando': client.say(alvo, `@${user.username} !latido !polvo !toque !fav !gado !hidratar !creeper`); break;
+        case '!comandos': client.say(alvo, `@${user.username} !steam !insta !latido !marsalo !grito !polvo !toque !fav !gado !hidratar !corno !creeper !mamadinha !gostosa`); break;
 
-        case '!commands': client.say(alvo, `@${user.username} !steam !discord !insta !latido !polvo !toque !fav !gado !hidratar !creeper`); break;
+        case '!commands': client.say(alvo, `@${user.username} !steam !insta !latido !marsalo !grito !polvo !toque !fav !gado !hidratar !corno !creeper !mamadinha !gostosa`); break;
 
-        case '!discord': client.say(alvo, 'discord nao disponivel'); break;
+        case '!discord': client.say(alvo, 'discord nao disponivel :('); break;
 
-        case '!insta': client.say(alvo, '@crackinfantil'); break;
+        case '!insta': client.say(alvo, '@zilio0'); break;
 
-        case '!instagram': client.say(alvo, '@crackinfantil'); break;
+        case '!instagram': client.say(alvo, '@zilio0'); break;
 
         case '!disc': client.say(alvo, 'discord nao disponivel'); break;
 
@@ -68,7 +65,7 @@ client.on('message', (alvo, user, msg, self) => {
 
         case '!latido': client.say(alvo, 'OhMyDog AU AU AU AU AU'); break;
 
-        case 'pinou': client.say(alvo, `murillo ta cego oifranCego`); break;
+        case 'pinou': client.say(alvo, `zilio ta cego oifranCego`); break;
 
         //case '!perfeita': client.say(alvo, `@${user.username} voce tem duvida que eh a @${nomeSemHashtag}`); break;
 
@@ -84,11 +81,11 @@ client.on('message', (alvo, user, msg, self) => {
 
         case '@bot_marsalo': client.say(alvo, `Ola @${user.username} oq gostaria? use !comandos para mais informacoes CoolCat`); break;
 
-        //case '@nightbot': client.say(alvo, `@${user.username} porque ta marcando esse merda quando tem eu??`); break;
+        case '@nightbot': client.say(alvo, `@${user.username} porque ta me traindo com outro bot :(??`); break;
 
-        //case '!mamadinha': client.say(alvo, `@${user.username} o bot acabou de te dar uma mamadinha KappaPride `); break;
+        case '!mamadinha': client.say(alvo, `@${user.username} o bot acabou de te dar uma mamadinha KappaPride `); break;
 
-        //case '!gostosa': client.say(alvo, `unica gostosa aqui eh a streamer BibleThump BibleThump`); break;
+        case '!gostosa': client.say(alvo, `unica gostosa aqui eh o streamer BibleThump BibleThump`); break;
 
         //case '!webnamoro': client.say(alvo, 'webnamorar = chifre mumumu oifranCorno'); break;
 
@@ -102,29 +99,28 @@ client.on('message', (alvo, user, msg, self) => {
 
         case '!hidratar': client.say(alvo, `@${nomeSemHashtag} seu viewer @${user.username} esta te lembrando de beber agua D: `); break;
 
-        case '!streamer': client.say(alvo, `@${user.username} yulla eh podre`); break;
+        case '!streamer': client.say(alvo, `@${user.username} estudande de computaria, tem 18 anos e ta tentando fazer um bot para twitch.`); break;
 
-        //case '!corno': client.say(alvo, `@${user.username} n conta pra streamaer que ela eh corna oifranCorno`); break;
+        case '!corno': client.say(alvo, `@${user.username} n conta pro streamer que ele eh corno oifranCorno`); break;
 
-        //case '!zoio': client.say(alvo, 'HARDWARE GARAIO'); break;
+            //case '!zoio': client.say(alvo, 'HARDWARE GARAIO'); break;
         default: ;
     };
+    
+        //sr que ta dando problema
+        if (commandSpliter[0] === '!sr') { sr.run(alvo, user, msg, self) }
 
+        //comando chat
+        else if (commandSpliter[0].toLowerCase() === 'f') {
 
-    //sr que ta dando problema
-    if (commandSpliter[0] === '!sr') { sr.run(alvo, user, msg, self) }
+            if (commandSpliter[1] === undefined) { client.say(alvo, `@${user.username} prestou respeito BibleThump`); }
 
-    //comando chat
-    else if (commandSpliter[0].toLowerCase() === 'f') {
+            else { client.say(alvo, `@${user.username} prestou respeito a ${commandSpliter[1]} BibleThump `); }
+        }
 
-        if (commandSpliter[1] === undefined) { client.say(alvo, `@${user.username} prestou respeito BibleThump`); }
-
-        else { client.say(alvo, `@${user.username} prestou respeito a ${commandSpliter[1]} BibleThump `); }
-    }
-
-    //comando chat
-    else if (letraSpliter[0] === '!') {
-        console.log(mensagem);
-        client.say(alvo, `desculpe nao reconheci esse comando :( `)
-    }
+        //comando chat
+        else if (letraSpliter[0] === '!') {
+            console.log(mensagem);
+            client.say(alvo, `desculpe nao reconheci esse comando :( `)
+        }
 })
