@@ -11,7 +11,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ed962ef7-fe97-4752-99a4-6bc5d95f1ce3</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>app.js</StartupFile>
+    <StartupFile>bots\app.js</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -29,20 +29,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include="botdisc.js" />
+    <Content Include="api\api.js" />
+    <Content Include="api\package.json" />
+    <Content Include="api\routes\register.js" />
+    <Content Include="botdisc\botdisc.js" />
     <Content Include="config\env.json" />
-    <Content Include="app.js" />
-    <Content Include="package.json" />
-    <Content Include="Page1.html">
-      <SubType>Code</SubType>
-    </Content>
+    <Content Include="bots\app.js" />
+    <Content Include="bots\package.json" />
     <Content Include="README.md" />
-    <Content Include="routes.js" />
-    <Content Include="sr.js" />
+    <Content Include="bots\sr.js" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="api\routes\" />
     <Folder Include="config\" />
-    <Folder Include="sim\" />
+    <Folder Include="bots\" />
+    <Folder Include="api\" />
+    <Folder Include="botdisc\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
 </Project>
